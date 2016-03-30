@@ -12,16 +12,36 @@ using agsXMPP.Collections;
 using agsXMPP.protocol.iq.roster;
 using R3MUS.Devpack.Slack;
 using System.Text.RegularExpressions;
+using System.ServiceProcess;
 
 namespace R3MUS.Devpack.JabberClient
 {
-    class Program
+    public class JabberBot : ServiceBase
     {
         static bool _wait;
 
         static void Main(string[] args)
         {
+            var jabberBot = new JabberBot();
 
+            if(Environment.UserInteractive)
+            {
+                jabberBot.OnStart(args);
+            }
+            else
+            {
+                ServiceBase.Run(new ServiceBase[] { jabberBot });
+            }
+            Console.ReadLine();
+        }
+        
+        protected override void OnStart(string[] args)
+        {
+            Start();
+        }
+
+        public void Start()
+        {
             Console.Title = "Jabber Client";
             Console.ForegroundColor = ConsoleColor.White;
 
@@ -29,10 +49,10 @@ namespace R3MUS.Devpack.JabberClient
             Console.WriteLine();
 
             Console.WriteLine(string.Format("JID: {0}", Properties.Settings.Default.XMPPUser));
-            
-            Console.WriteLine(string.Format("Password: {0}", 
+
+            Console.WriteLine(string.Format("Password: {0}",
                 Regex.Replace(Properties.Settings.Default.XMPPPassword, @"[^d]", "*")));
-            
+
             Jid jidSender = new Jid(Properties.Settings.Default.XMPPUser);
             XmppClientConnection xmpp = new XmppClientConnection(jidSender.Server);
             xmpp.Open(jidSender.User, Properties.Settings.Default.XMPPPassword);
@@ -66,7 +86,7 @@ namespace R3MUS.Devpack.JabberClient
             p.Type = PresenceType.available;
             xmpp.Send(p);
             Console.WriteLine();
-            
+
             Console.WriteLine(string.Format("Listening to {0}", Properties.Settings.Default.XMPPChannel));
             Console.WriteLine();
 
@@ -93,20 +113,20 @@ namespace R3MUS.Devpack.JabberClient
             xmpp.Close();
         }
 
-        static void xmpp_OnPresence(object sender, Presence pres)
+        private void xmpp_OnPresence(object sender, Presence pres)
         {
             Console.WriteLine("Available Contacts: ");
             Console.WriteLine("{0}@{1}  {2}", pres.From.User, pres.From.Server, pres.Type);
             Console.WriteLine();
         }
 
-        static void xmpp_OnLogin(object sender)
+        private void xmpp_OnLogin(object sender)
         {
             _wait = false;
             Console.WriteLine("Logged In");
         }
 
-        static void MessageCallBack(object sender,
+        private void MessageCallBack(object sender,
                                     agsXMPP.protocol.client.Message msg,
                                     object data)
         {
@@ -114,13 +134,18 @@ namespace R3MUS.Devpack.JabberClient
             {
                 var lines = msg.Body.Split(new[] { "\n" }, StringSplitOptions.RemoveEmptyEntries);
                 var senderLines = lines[0].Replace("**** This was broadcast by ", "").Replace(" EVE ****", "").Split(new[] { " at " }, StringSplitOptions.RemoveEmptyEntries);
-                var recipient = lines[2].Replace("**** Message sent to the ", "").Replace(" Group ****", "");
+                var recipient = lines[lines.Length - 1].Replace("**** Message sent to the ", "").Replace(" Group ****", "");
 
                 var sendLines = new List<string>();
                 sendLines.Add(string.Format("Timestamp: {0}", senderLines[1]));
                 sendLines.Add(string.Format("From: {0}", senderLines[0]));
                 sendLines.Add(string.Format("To: {0}", recipient));
-                sendLines.Add(lines[1]);
+                //sendLines.Add(lines[1]);
+
+                for (var i = 1; i < lines.Length - 1; i++)
+                {
+                    sendLines.Add(lines[i]);
+                }
 
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("{0}>> {1}", msg.From.User, msg.Body);
@@ -131,7 +156,8 @@ namespace R3MUS.Devpack.JabberClient
 
                 if(!sendLines[0].Contains("@everyone"))
                 {
-                    sendLines.Insert(0, "@everyone");
+                    //sendLines.Insert(0, "@everyone");
+                    sendLines[0] = string.Concat("@everyone: ", sendLines[0]);
                 }
                 payload.Attachments.Add(new MessagePayloadAttachment()
                 {
@@ -149,6 +175,15 @@ namespace R3MUS.Devpack.JabberClient
                     }
                 }
             }
+        }
+
+        private void InitializeComponent()
+        {
+            // 
+            // JabberBot
+            // 
+            this.ServiceName = "JabberBot";
+
         }
     }
 

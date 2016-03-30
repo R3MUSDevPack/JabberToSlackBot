@@ -3,25 +3,25 @@
   <Profiles />
   <Settings>
     <Setting Name="XMPPUser" Type="System.String" Scope="Application">
-      <Value Profile="(Default)" />
+      <Value Profile="(Default)">maximus_chanlin@bladesofgrass.space</Value>
     </Setting>
     <Setting Name="XMPPPassword" Type="System.String" Scope="Application">
-      <Value Profile="(Default)" />
+      <Value Profile="(Default)">p33K4800</Value>
     </Setting>
     <Setting Name="XMPPChannel" Type="System.String" Scope="Application">
-      <Value Profile="(Default)" />
+      <Value Profile="(Default)">director_gnome@bladesofgrass.space</Value>
     </Setting>
     <Setting Name="SlackCorpWebhook" Type="System.String" Scope="Application">
-      <Value Profile="(Default)" />
+      <Value Profile="(Default)">https://hooks.slack.com/services/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</Value>
     </Setting>
     <Setting Name="BotName" Type="System.String" Scope="Application">
-      <Value Profile="(Default)" />
+      <Value Profile="(Default)">Marvin the Paranoid Fleetbot</Value>
     </Setting>
     <Setting Name="SlackRoom" Type="System.String" Scope="Application">
-      <Value Profile="(Default)" />
+      <Value Profile="(Default)">it_testing</Value>
     </Setting>
     <Setting Name="XMPPGroupName" Type="System.String" Scope="Application">
-      <Value Profile="(Default)" />
+      <Value Profile="(Default)">bog_all</Value>
     </Setting>
     <Setting Name="SlackSharedWebhooks" Type="System.Collections.Specialized.StringCollection" Scope="Application">
       <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;

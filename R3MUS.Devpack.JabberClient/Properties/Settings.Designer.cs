@@ -25,7 +25,7 @@ namespace R3MUS.Devpack.JabberClient.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.DefaultSettingValueAttribute("maximus_chanlin@bladesofgrass.space")]
         public string XMPPUser {
             get {
                 return ((string)(this["XMPPUser"]));
@@ -34,7 +34,7 @@ namespace R3MUS.Devpack.JabberClient.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.DefaultSettingValueAttribute("p33K4800")]
         public string XMPPPassword {
             get {
                 return ((string)(this["XMPPPassword"]));
@@ -43,7 +43,7 @@ namespace R3MUS.Devpack.JabberClient.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.DefaultSettingValueAttribute("director_gnome@bladesofgrass.space")]
         public string XMPPChannel {
             get {
                 return ((string)(this["XMPPChannel"]));
@@ -52,7 +52,7 @@ namespace R3MUS.Devpack.JabberClient.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://hooks.slack.com/services/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")]
         public string SlackCorpWebhook {
             get {
                 return ((string)(this["SlackCorpWebhook"]));
@@ -61,7 +61,7 @@ namespace R3MUS.Devpack.JabberClient.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Marvin the Paranoid Fleetbot")]
         public string BotName {
             get {
                 return ((string)(this["BotName"]));
@@ -70,7 +70,7 @@ namespace R3MUS.Devpack.JabberClient.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.DefaultSettingValueAttribute("it_testing")]
         public string SlackRoom {
             get {
                 return ((string)(this["SlackRoom"]));
@@ -79,7 +79,7 @@ namespace R3MUS.Devpack.JabberClient.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.DefaultSettingValueAttribute("bog_all")]
         public string XMPPGroupName {
             get {
                 return ((string)(this["XMPPGroupName"]));
