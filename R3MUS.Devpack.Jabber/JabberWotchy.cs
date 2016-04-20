@@ -261,7 +261,8 @@ namespace R3MUS.Devpack.Jabber
                     }
                 }
                 catch(Exception ex)
-                { }
+                {
+                }
             }
         }
 
