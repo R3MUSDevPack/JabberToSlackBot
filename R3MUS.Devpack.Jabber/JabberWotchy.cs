@@ -208,13 +208,18 @@ namespace R3MUS.Devpack.Jabber
             {
                 var lines = msg.Body.Split(new[] { "\n" }, StringSplitOptions.RemoveEmptyEntries);
                 var senderLines = lines[0].Replace("**** This was broadcast by ", "").Replace(" EVE ****", "").Split(new[] { " at " }, StringSplitOptions.RemoveEmptyEntries);
-                var recipient = lines[2].Replace("**** Message sent to the ", "").Replace(" Group ****", "");
+                var recipient = lines[lines.Length - 1].Replace("**** Message sent to the ", "").Replace(" Group ****", "");
 
                 var sendLines = new List<string>();
                 sendLines.Add(string.Format("Timestamp: {0}", senderLines[1]));
                 sendLines.Add(string.Format("From: {0}", senderLines[0]));
                 sendLines.Add(string.Format("To: {0}", recipient));
-                sendLines.Add(lines[1]);
+                //sendLines.Add(lines[1]);
+
+                for (var i = 1; i < lines.Length - 1; i++)
+                {
+                    sendLines.Add(lines[i]);
+                }
 
                 //Console.ForegroundColor = ConsoleColor.Red;
                 //Console.WriteLine("{0}>> {1}", msg.From.User, msg.Body);
