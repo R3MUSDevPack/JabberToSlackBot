@@ -1,0 +1,39 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="R3MUS.Devpack.Jabber.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="BroadcastName" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Marvin the Paranoid Fleetbot</Value>
+    </Setting>
+    <Setting Name="SharedWebhooks" Type="System.Collections.Specialized.StringCollection" Scope="Application">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;https://hooks.slack.com/services/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&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="SlackWebhook" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">https://hooks.slack.com/services/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</Value>
+    </Setting>
+    <Setting Name="Room" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">fleets</Value>
+    </Setting>
+    <Setting Name="CorpGroup" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">corp_r3mus</Value>
+    </Setting>
+    <Setting Name="AllianceGroup" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">bog_all</Value>
+    </Setting>
+    <Setting Name="UserName" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">maximus_chanlin@bladesofgrass.space</Value>
+    </Setting>
+    <Setting Name="Password" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">p33K4800</Value>
+    </Setting>
+    <Setting Name="ListenTo" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">director_gnome@bladesofgrass.space</Value>
+    </Setting>
+    <Setting Name="BroadcastShortName" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Marvin</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
