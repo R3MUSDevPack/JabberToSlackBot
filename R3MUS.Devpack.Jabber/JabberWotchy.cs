@@ -47,12 +47,6 @@ namespace R3MUS.Devpack.Jabber
 
         public void Start()
         {
-            //Console.Title = "Jabber Client";
-            //Console.ForegroundColor = ConsoleColor.White;
-
-            //Console.WriteLine("Login");
-            //Console.WriteLine();
-
             if (Environment.UserInteractive)
             {
                 try
@@ -93,12 +87,9 @@ namespace R3MUS.Devpack.Jabber
             }
             try
             {
-                //Console.WriteLine("Login");
-                //Console.WriteLine();
                 ConsoleWriteLine("Login");
                 ConsoleWriteLine("");
-
-                //Console.WriteLine(string.Format("JID: {0}", Properties.Settings.Default.UserName));
+                
                 ConsoleWriteLine(string.Format("JID: {0}", Properties.Settings.Default.UserName));
 
                 Jid jidSender = new Jid(Properties.Settings.Default.UserName);
@@ -106,8 +97,8 @@ namespace R3MUS.Devpack.Jabber
                 xmpp.Open(jidSender.User, Properties.Settings.Default.Password);
 
                 xmpp.OnLogin += new ObjectHandler(xmpp_OnLogin);
-
-                //Console.Write("Wait for Login ");
+                xmpp.OnSocketError += new ErrorHandler(xmpp_OnSocketError);
+                
                 ConsoleWrite("Wait for Login ");
 
                 var i = 0;
@@ -115,14 +106,10 @@ namespace R3MUS.Devpack.Jabber
 
                 do
                 {
-                    //Console.Write(".");
                     ConsoleWrite(".");
                     Thread.Sleep(500);
-
-                    //_wait = false;
                 }
                 while (_wait);
-                //OnLogin();      
             }
             catch(Exception ex)
             {
@@ -145,6 +132,28 @@ namespace R3MUS.Devpack.Jabber
             }
         }
 
+        private void xmpp_OnSocketError(object sender, Exception ex)
+        {
+            var payload = new MessagePayload();
+            payload.Attachments = new List<MessagePayloadAttachment>();
+
+            payload.Attachments.Add(new MessagePayloadAttachment()
+            {
+                Text = "Life? Don't talk to me about life.",
+                Title = "Marvin won't talk to anyone. Try oiling his nuts.",
+                Colour = "#ff0066"
+            });
+            payload.Attachments.Add(new MessagePayloadAttachment()
+            {
+                Text = ex.Message,
+                Title = "Marvin system boot error",
+                Colour = "#ff0066"
+            });
+            Plugin.SendToRoom(payload, "it_testing", Properties.Settings.Default.SlackWebhook, Properties.Settings.Default.BroadcastName);
+            Stop();
+            Start();
+        }
+
         private void xmpp_OnLogin(object sender)
         {
             OnLogin();
@@ -155,27 +164,18 @@ namespace R3MUS.Devpack.Jabber
             try
             {
                 _wait = false;
-                //Console.WriteLine("Login Status:");
-                //Console.WriteLine("xmpp Connection State {0}", xmpp.XmppConnectionState);
-                //Console.WriteLine("xmpp Authenticated? {0}", xmpp.Authenticated);
-                //Console.WriteLine();
 
                 ConsoleWriteLine("Login Status:");
                 ConsoleWriteLine(string.Format("xmpp Connection State {0}", xmpp.XmppConnectionState));
                 ConsoleWriteLine(string.Format("xmpp Authenticated? {0}", xmpp.Authenticated));
                 ConsoleWriteLine("");
-
-                //Console.WriteLine("Sending Presence");
+                
                 ConsoleWriteLine("Sending Presence");
                 Presence p = new Presence(ShowType.chat, "Online");
                 p.Type = PresenceType.available;
                 xmpp.Send(p);
-                //Console.WriteLine();
                 ConsoleWriteLine("");
-
-                //Console.WriteLine(string.Format("Listening to {0}", Properties.Settings.Default.ListenTo));
-                //Console.WriteLine();
-
+                
                 ConsoleWriteLine(string.Format("Listening to {0}", Properties.Settings.Default.ListenTo));
 
                 xmpp.MessageGrabber.Add(new Jid(Properties.Settings.Default.ListenTo),
@@ -184,7 +184,6 @@ namespace R3MUS.Devpack.Jabber
                                          null);
 
                 ConsoleWriteLine("", ConsoleColor.White);
-                //Console.ReadLine();
             }
             catch(Exception ex)
             {
@@ -214,17 +213,12 @@ namespace R3MUS.Devpack.Jabber
                 sendLines.Add(string.Format("Timestamp: {0}", senderLines[1]));
                 sendLines.Add(string.Format("From: {0}", senderLines[0]));
                 sendLines.Add(string.Format("To: {0}", recipient));
-                //sendLines.Add(lines[1]);
 
                 for (var i = 1; i < lines.Length - 1; i++)
                 {
                     sendLines.Add(lines[i]);
                 }
-
-                //Console.ForegroundColor = ConsoleColor.Red;
-                //Console.WriteLine("{0}>> {1}", msg.From.User, msg.Body);
-                //Console.ForegroundColor = ConsoleColor.Green;
-
+                
                 ConsoleWriteLine(string.Format("{0}>> {1}", msg.From.User, msg.Body), ConsoleColor.Red);
 
                 var payload = new MessagePayload();
