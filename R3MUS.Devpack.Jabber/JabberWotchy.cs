@@ -1,6 +1,7 @@
 ﻿using agsXMPP;
 using agsXMPP.Collections;
 using agsXMPP.protocol.client;
+using agsXMPP.Xml.Dom;
 using R3MUS.Devpack.Slack;
 using System;
 using System.Collections.Generic;
@@ -98,7 +99,9 @@ namespace R3MUS.Devpack.Jabber
 
                 xmpp.OnLogin += new ObjectHandler(xmpp_OnLogin);
                 xmpp.OnSocketError += new ErrorHandler(xmpp_OnSocketError);
-                
+                xmpp.OnError += new ErrorHandler(xmpp_OnSocketError);
+                xmpp.OnStreamError += new XmppElementHandler(xmpp_OnStreamError);
+
                 ConsoleWrite("Wait for Login ");
 
                 var i = 0;
@@ -133,6 +136,15 @@ namespace R3MUS.Devpack.Jabber
         }
 
         private void xmpp_OnSocketError(object sender, Exception ex)
+        {
+            Restart();
+        }
+        private void xmpp_OnStreamError(object sender, Element e)
+        {
+            Restart();
+        }
+
+        private void Restart()
         {
             var payload = new MessagePayload();
             payload.Attachments = new List<MessagePayloadAttachment>();
