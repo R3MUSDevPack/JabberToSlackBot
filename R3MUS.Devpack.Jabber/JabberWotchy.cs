@@ -226,9 +226,9 @@ namespace R3MUS.Devpack.Jabber
                 }
                 
                 ConsoleWriteLine(string.Format("{0}>> {1}", msg.From.User, msg.Body), ConsoleColor.Red);
-
+                
                 var payload = new MessagePayload();
-                //payload.Text = string.Format("@channel: From {0}", senderLines[0]);
+                payload.Text = "@channel: Alliance Broadcast";
                 payload.Attachments = new List<MessagePayloadAttachment>();
                 if (!msg.Body.Contains("@everyone"))
                 {
@@ -237,7 +237,7 @@ namespace R3MUS.Devpack.Jabber
                 payload.Attachments.Add(new MessagePayloadAttachment()
                 {
                     Text = new Censor().CensorText(string.Join("\n", sendLines)),
-                    Title = string.Format("{0}: Message from {1}", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"), Properties.Settings.Default.BroadcastShortName),
+                    Title = string.Format("{0}", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")),
                     Colour = "#ff0066"
                 });
                 Plugin.SendToRoom(payload, Properties.Settings.Default.Room, Properties.Settings.Default.SlackWebhook, Properties.Settings.Default.BroadcastName);
