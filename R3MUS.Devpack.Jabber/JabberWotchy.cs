@@ -230,7 +230,7 @@ namespace R3MUS.Devpack.Jabber
                 }
                 payload.Attachments.Add(new MessagePayloadAttachment()
                 {
-                    Text = string.Join("\n", sendLines),
+                    Text = new Censor().CensorText(string.Join("\n", sendLines)),
                     Title = string.Format("{0}: Message from {1}", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"), Properties.Settings.Default.BroadcastShortName),
                     Colour = "#ff0066"
                 });
