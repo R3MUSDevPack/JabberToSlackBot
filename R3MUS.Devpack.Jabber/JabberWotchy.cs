@@ -228,7 +228,7 @@ namespace R3MUS.Devpack.Jabber
                 ConsoleWriteLine(string.Format("{0}>> {1}", msg.From.User, msg.Body), ConsoleColor.Red);
 
                 var payload = new MessagePayload();
-                payload.Text = "@channel";
+                //payload.Text = string.Format("@channel: From {0}", senderLines[0]);
                 payload.Attachments = new List<MessagePayloadAttachment>();
                 if (!msg.Body.Contains("@everyone"))
                 {
