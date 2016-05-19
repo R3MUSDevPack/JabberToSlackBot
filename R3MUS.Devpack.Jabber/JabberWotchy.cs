@@ -155,12 +155,6 @@ namespace R3MUS.Devpack.Jabber
                 Title = "Marvin won't talk to anyone. Try oiling his nuts.",
                 Colour = "#ff0066"
             });
-            payload.Attachments.Add(new MessagePayloadAttachment()
-            {
-                Text = ex.Message,
-                Title = "Marvin system boot error",
-                Colour = "#ff0066"
-            });
             Plugin.SendToRoom(payload, "it_testing", Properties.Settings.Default.SlackWebhook, Properties.Settings.Default.BroadcastName);
             Stop();
             Start();
