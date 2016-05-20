@@ -6,6 +6,7 @@ using R3MUS.Devpack.Slack;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.ServiceProcess;
 using System.Text;
 using System.Threading;
@@ -17,6 +18,12 @@ namespace R3MUS.Devpack.Jabber
     {
         private bool _wait;
         private XmppClientConnection xmpp;
+        static ConsoleEventDelegate handler;   // Keeps it from getting garbage collected
+                                               // Pinvoke
+        private delegate bool ConsoleEventDelegate(int eventType);
+        [DllImport("kernel32.dll", SetLastError = true)]
+        private static extern bool SetConsoleCtrlHandler(ConsoleEventDelegate callback, bool add);
+
 
         static void Main(string[] args)
         {
@@ -24,6 +31,8 @@ namespace R3MUS.Devpack.Jabber
             {
                 var jabberWotchy = new JabberWotchy(args);
                 jabberWotchy.Start();
+                handler = new ConsoleEventDelegate(ConsoleEventCallback);
+                SetConsoleCtrlHandler(handler, true);
             }
             else
             {
@@ -212,11 +221,11 @@ namespace R3MUS.Devpack.Jabber
             if (msg.Body != null)
             {
                 var lines = msg.Body.Split(new[] { "\n" }, StringSplitOptions.RemoveEmptyEntries);
-                var senderLines = lines[0].Replace("**** This was broadcast by ", "").Replace(" EVE ****", "").Split(new[] { " at " }, StringSplitOptions.RemoveEmptyEntries);
+                var senderLines = lines[0].Replace("**** This was broadcast by ", "").Replace(" EVE ****", "").Replace("@everyone", "").Split(new[] { " at " }, StringSplitOptions.RemoveEmptyEntries);
                 var recipient = lines[lines.Length - 1].Replace("**** Message sent to the ", "").Replace(" Group ****", "");
 
                 var sendLines = new List<string>();
-                sendLines.Add(string.Format("Timestamp: {0}", senderLines[1]));
+                //sendLines.Add(string.Format("Timestamp: {0}", senderLines[1]));
                 sendLines.Add(string.Format("From: {0}", senderLines[0]));
                 sendLines.Add(string.Format("To: {0}", recipient));
 
@@ -230,10 +239,10 @@ namespace R3MUS.Devpack.Jabber
                 var payload = new MessagePayload();
                 payload.Text = "@channel: Alliance Broadcast";
                 payload.Attachments = new List<MessagePayloadAttachment>();
-                if (!msg.Body.Contains("@everyone"))
-                {
-                    sendLines.Insert(0, "@everyone");
-                }
+                //if (!msg.Body.Contains("@everyone"))
+                //{
+                //    sendLines.Insert(0, "@everyone");
+                //}
                 payload.Attachments.Add(new MessagePayloadAttachment()
                 {
                     Text = new Censor().CensorText(string.Join("\n", sendLines)),
@@ -303,6 +312,24 @@ namespace R3MUS.Devpack.Jabber
 
             xmpp.Close();
             xmpp = null;
-        }        
+        }
+
+        static bool ConsoleEventCallback(int eventType)
+        {
+            if (eventType == 2)
+            {
+                var payload = new MessagePayload();
+                payload.Attachments = new List<MessagePayloadAttachment>();
+
+                payload.Attachments.Add(new MessagePayloadAttachment()
+                {
+                    Text = "Life? Don't talk to me about life.",
+                    Title = "Marvin has been manually shut down.",
+                    Colour = "#ff0066"
+                });
+                Plugin.SendToRoom(payload, "it", Properties.Settings.Default.SlackWebhook, Properties.Settings.Default.BroadcastName);
+            }
+            return false;
+        }
     }
 }
