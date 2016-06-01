@@ -107,9 +107,11 @@ namespace R3MUS.Devpack.Jabber
                 xmpp.Open(jidSender.User, Properties.Settings.Default.Password);
 
                 xmpp.OnLogin += new ObjectHandler(xmpp_OnLogin);
+                xmpp.OnAuthError += new XmppElementHandler(xmpp_OnStreamError);
                 xmpp.OnSocketError += new ErrorHandler(xmpp_OnSocketError);
-                xmpp.OnError += new ErrorHandler(xmpp_OnSocketError);
                 xmpp.OnStreamError += new XmppElementHandler(xmpp_OnStreamError);
+                xmpp.OnError += new ErrorHandler(xmpp_OnSocketError);
+                xmpp.OnClose += Xmpp_OnClose;
 
                 ConsoleWrite("Wait for Login ");
 
@@ -142,6 +144,16 @@ namespace R3MUS.Devpack.Jabber
                 });
                 Plugin.SendToRoom(payload, "it_testing", Properties.Settings.Default.SlackWebhook, Properties.Settings.Default.BroadcastName);
             }
+        }
+
+        private void Xmpp_OnClose(object sender)
+        {
+            Restart();
+        }
+
+        private void Xmpp_OnStreamError(object sender, Element e)
+        {
+            Restart();
         }
 
         private void xmpp_OnSocketError(object sender, Exception ex)
