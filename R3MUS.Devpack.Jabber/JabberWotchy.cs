@@ -263,7 +263,7 @@ namespace R3MUS.Devpack.Jabber
                 });
                 Plugin.SendToRoom(payload, Properties.Settings.Default.Room, Properties.Settings.Default.SlackWebhook, Properties.Settings.Default.BroadcastName);
 
-                if (msg.Body.Contains("bog_all"))
+                if (msg.Body.Contains(Properties.Settings.Default.AllianceGroup))
                 {
                     foreach (var webhook in Properties.Settings.Default.SharedWebhooks)
                     {

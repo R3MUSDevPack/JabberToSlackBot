@@ -34,10 +34,9 @@ namespace R3MUS.Devpack.Jabber.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute(@"<?xml version=""1.0"" encoding=""utf-16""?>
-<ArrayOfString xmlns:xsi=""http://www.w3.org/2001/XMLSchema-instance"" xmlns:xsd=""http://www.w3.org/2001/XMLSchema"">
-  <string>https://hooks.slack.com/services/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</string>
-</ArrayOfString>")]
+        [global::System.Configuration.DefaultSettingValueAttribute("<?xml version=\"1.0\" encoding=\"utf-16\"?>\r\n<ArrayOfString xmlns:xsi=\"http://www.w3." +
+            "org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">\r\n  <s" +
+            "tring />\r\n</ArrayOfString>")]
         public global::System.Collections.Specialized.StringCollection SharedWebhooks {
             get {
                 return ((global::System.Collections.Specialized.StringCollection)(this["SharedWebhooks"]));
@@ -46,7 +45,7 @@ namespace R3MUS.Devpack.Jabber.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("https://hooks.slack.com/services/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")]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
         public string SlackWebhook {
             get {
                 return ((string)(this["SlackWebhook"]));
@@ -55,7 +54,7 @@ namespace R3MUS.Devpack.Jabber.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("fleets")]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
         public string Room {
             get {
                 return ((string)(this["Room"]));
@@ -64,7 +63,7 @@ namespace R3MUS.Devpack.Jabber.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("corp_r3mus")]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
         public string CorpGroup {
             get {
                 return ((string)(this["CorpGroup"]));
@@ -73,7 +72,7 @@ namespace R3MUS.Devpack.Jabber.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("bog_all")]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
         public string AllianceGroup {
             get {
                 return ((string)(this["AllianceGroup"]));
@@ -82,7 +81,7 @@ namespace R3MUS.Devpack.Jabber.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("maximus_chanlin@bladesofgrass.space")]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
         public string UserName {
             get {
                 return ((string)(this["UserName"]));
@@ -91,7 +90,7 @@ namespace R3MUS.Devpack.Jabber.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("p33K4800")]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
         public string Password {
             get {
                 return ((string)(this["Password"]));
@@ -100,7 +99,7 @@ namespace R3MUS.Devpack.Jabber.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("director_gnome@bladesofgrass.space")]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
         public string ListenTo {
             get {
                 return ((string)(this["ListenTo"]));
@@ -109,7 +108,7 @@ namespace R3MUS.Devpack.Jabber.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Marvin")]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
         public string BroadcastShortName {
             get {
                 return ((string)(this["BroadcastShortName"]));
