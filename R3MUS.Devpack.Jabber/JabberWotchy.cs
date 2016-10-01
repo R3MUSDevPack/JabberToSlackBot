@@ -64,16 +64,19 @@ namespace R3MUS.Devpack.Jabber
                     Console.Title = "Jabber Client";
                     Console.ForegroundColor = ConsoleColor.White;
 
-                    var payload = new MessagePayload();
-                    payload.Attachments = new List<MessagePayloadAttachment>();
-
-                    payload.Attachments.Add(new MessagePayloadAttachment()
+                    if (Properties.Settings.Default.Debug)
                     {
-                        Text = "I just want you to know, I'm feeling very, very depressed.",
-                        Title = "Marvin is waking up...",
-                        Colour = "#ff0066"
-                    });
-                    Plugin.SendToRoom(payload, "it", Properties.Settings.Default.SlackWebhook, Properties.Settings.Default.BroadcastName);
+                        var payload = new MessagePayload();
+                        payload.Attachments = new List<MessagePayloadAttachment>();
+
+                        payload.Attachments.Add(new MessagePayloadAttachment()
+                        {
+                            Text = "I just want you to know, I'm feeling very, very depressed.",
+                            Title = "Marvin is waking up...",
+                            Colour = "#ff0066"
+                        });
+                        Plugin.SendToRoom(payload, "it", Properties.Settings.Default.SlackWebhook, Properties.Settings.Default.BroadcastName);
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -167,16 +170,19 @@ namespace R3MUS.Devpack.Jabber
 
         private void Restart()
         {
-            var payload = new MessagePayload();
-            payload.Attachments = new List<MessagePayloadAttachment>();
-
-            payload.Attachments.Add(new MessagePayloadAttachment()
+            if (Properties.Settings.Default.Debug)
             {
-                Text = "Life? Don't talk to me about life.",
-                Title = "Marvin won't talk to anyone. Try oiling his nuts.",
-                Colour = "#ff0066"
-            });
-            Plugin.SendToRoom(payload, "it_testing", Properties.Settings.Default.SlackWebhook, Properties.Settings.Default.BroadcastName);
+                var payload = new MessagePayload();
+                payload.Attachments = new List<MessagePayloadAttachment>();
+
+                payload.Attachments.Add(new MessagePayloadAttachment()
+                {
+                    Text = "Life? Don't talk to me about life.",
+                    Title = "Marvin won't talk to anyone. Try oiling his nuts.",
+                    Colour = "#ff0066"
+                });
+                Plugin.SendToRoom(payload, "it_testing", Properties.Settings.Default.SlackWebhook, Properties.Settings.Default.BroadcastName);
+            }
             Stop();
             Start();
         }
@@ -311,17 +317,19 @@ namespace R3MUS.Devpack.Jabber
 
         private void Stop()
         {
-            var payload = new MessagePayload();
-            payload.Attachments = new List<MessagePayloadAttachment>();
-
-            payload.Attachments.Add(new MessagePayloadAttachment()
+            if (Properties.Settings.Default.Debug)
             {
-                Text = "Life? Don't talk to me about life.",
-                Title = "Marvin is shutting down. You might want to find up what's up with the grouchy bastard.",
-                Colour = "#ff0066"
-            });
-            Plugin.SendToRoom(payload, "it", Properties.Settings.Default.SlackWebhook, Properties.Settings.Default.BroadcastName);
+                var payload = new MessagePayload();
+                payload.Attachments = new List<MessagePayloadAttachment>();
 
+                payload.Attachments.Add(new MessagePayloadAttachment()
+                {
+                    Text = "Life? Don't talk to me about life.",
+                    Title = "Marvin is shutting down. You might want to find up what's up with the grouchy bastard.",
+                    Colour = "#ff0066"
+                });
+                Plugin.SendToRoom(payload, "it", Properties.Settings.Default.SlackWebhook, Properties.Settings.Default.BroadcastName);
+            }
             xmpp.Close();
             xmpp = null;
         }

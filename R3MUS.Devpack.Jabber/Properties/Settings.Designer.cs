@@ -131,5 +131,14 @@ namespace R3MUS.Devpack.Jabber.Properties {
                 return ((global::System.Collections.Specialized.StringCollection)(this["CensoredWords"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool Debug {
+            get {
+                return ((bool)(this["Debug"]));
+            }
+        }
     }
 }
