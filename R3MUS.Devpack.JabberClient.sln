@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "R3MUS.Devpack.JabberClient", "R3MUS.Devpack.JabberClient\R3MUS.Devpack.JabberClient.csproj", "{1981FE00-182E-4852-9F2E-288865EE4641}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "R3MUS.Devpack.Jabber", "R3MUS.Devpack.Jabber\R3MUS.Devpack.Jabber.csproj", "{35B003F3-CCC9-4B41-9924-0E5028894BA7}"
 EndProject
 Global
@@ -13,10 +11,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{1981FE00-182E-4852-9F2E-288865EE4641}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1981FE00-182E-4852-9F2E-288865EE4641}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1981FE00-182E-4852-9F2E-288865EE4641}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1981FE00-182E-4852-9F2E-288865EE4641}.Release|Any CPU.Build.0 = Release|Any CPU
 		{35B003F3-CCC9-4B41-9924-0E5028894BA7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{35B003F3-CCC9-4B41-9924-0E5028894BA7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{35B003F3-CCC9-4B41-9924-0E5028894BA7}.Release|Any CPU.ActiveCfg = Release|Any CPU
