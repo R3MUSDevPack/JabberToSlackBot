@@ -58,7 +58,7 @@
     </Reference>
     <Reference Include="R3MUS.Devpack.Slack, Version=1.0.0.0, Culture=neutral, PublicKeyToken=7a498929f3cf822d, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\R3MUS.Devpack.Slack\R3MUS.Devpack.Slack\bin\Debug\R3MUS.Devpack.Slack.dll</HintPath>
+      <HintPath>..\..\SlackClient\R3MUS.Devpack.Slack\bin\Debug\R3MUS.Devpack.Slack.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />

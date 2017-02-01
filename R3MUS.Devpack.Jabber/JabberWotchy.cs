@@ -168,7 +168,7 @@ namespace R3MUS.Devpack.Jabber
             Restart();
         }
 
-        private void Restart()
+        private async void Restart()
         {
             if (Properties.Settings.Default.Debug)
             {
@@ -184,7 +184,15 @@ namespace R3MUS.Devpack.Jabber
                 Plugin.SendToRoom(payload, "it_testing", Properties.Settings.Default.SlackWebhook, Properties.Settings.Default.BroadcastName);
             }
             Stop();
+
+            await Wait(2000);
+
             Start();
+        }
+
+        async Task Wait(int seconds)
+        {
+            await Task.Delay(seconds);
         }
 
         private void xmpp_OnLogin(object sender)
@@ -315,7 +323,7 @@ namespace R3MUS.Devpack.Jabber
             }
         }
 
-        private void Stop()
+        private new void Stop()
         {
             if (Properties.Settings.Default.Debug)
             {
