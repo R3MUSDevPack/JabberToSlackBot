@@ -61,6 +61,7 @@
       <HintPath>..\..\SlackClient\R3MUS.Devpack.Slack\bin\Debug\R3MUS.Devpack.Slack.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.ServiceProcess" />
     <Reference Include="System.Xml.Linq" />

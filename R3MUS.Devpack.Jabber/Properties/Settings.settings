@@ -9,23 +9,11 @@
       <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
 &lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" /&gt;</Value>
     </Setting>
-    <Setting Name="SlackWebhook" Type="System.String" Scope="Application">
-      <Value Profile="(Default)" />
-    </Setting>
     <Setting Name="CorpGroup" Type="System.String" Scope="Application">
       <Value Profile="(Default)">corp_r3mus</Value>
     </Setting>
     <Setting Name="AllianceGroup" Type="System.String" Scope="Application">
       <Value Profile="(Default)">2gthr_all</Value>
-    </Setting>
-    <Setting Name="UserName" Type="System.String" Scope="Application">
-      <Value Profile="(Default)" />
-    </Setting>
-    <Setting Name="Password" Type="System.String" Scope="Application">
-      <Value Profile="(Default)" />
-    </Setting>
-    <Setting Name="ListenTo" Type="System.String" Scope="Application">
-      <Value Profile="(Default)" />
     </Setting>
     <Setting Name="BroadcastShortName" Type="System.String" Scope="Application">
       <Value Profile="(Default)" />
@@ -39,19 +27,32 @@
   &lt;string&gt;fuck&lt;/string&gt;
   &lt;string&gt;wanker&lt;/string&gt;
   &lt;string&gt;twat&lt;/string&gt;
+  &lt;string&gt;ladies&lt;/string&gt;
 &lt;/ArrayOfString&gt;</Value>
     </Setting>
     <Setting Name="Debug" Type="System.Boolean" Scope="Application">
-      <Value Profile="(Default)">True</Value>
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="SlackWebhook" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">https://hooks.slack.com/services/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</Value>
     </Setting>
     <Setting Name="Room" Type="System.String" Scope="Application">
-      <Value Profile="(Default)" />
+      <Value Profile="(Default)">fleets</Value>
+    </Setting>
+    <Setting Name="UserName" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">clyde_en_marland@bladesofgrass.space</Value>
+    </Setting>
+    <Setting Name="Password" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">p33K4800</Value>
+    </Setting>
+    <Setting Name="ListenTo" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">director_gnome@bladesofgrass.space</Value>
     </Setting>
     <Setting Name="FCGroup" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
+      <Value Profile="(Default)">dow_fcs</Value>
     </Setting>
     <Setting Name="FCRoom" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
+      <Value Profile="(Default)">fleet-command</Value>
     </Setting>
   </Settings>
 </SettingsFile>

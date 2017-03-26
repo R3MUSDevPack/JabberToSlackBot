@@ -44,15 +44,6 @@ namespace R3MUS.Devpack.Jabber.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string SlackWebhook {
-            get {
-                return ((string)(this["SlackWebhook"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("corp_r3mus")]
         public string CorpGroup {
             get {
@@ -66,33 +57,6 @@ namespace R3MUS.Devpack.Jabber.Properties {
         public string AllianceGroup {
             get {
                 return ((string)(this["AllianceGroup"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string UserName {
-            get {
-                return ((string)(this["UserName"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string Password {
-            get {
-                return ((string)(this["Password"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string ListenTo {
-            get {
-                return ((string)(this["ListenTo"]));
             }
         }
         
@@ -115,6 +79,7 @@ namespace R3MUS.Devpack.Jabber.Properties {
   <string>fuck</string>
   <string>wanker</string>
   <string>twat</string>
+  <string>ladies</string>
 </ArrayOfString>")]
         public global::System.Collections.Specialized.StringCollection CensoredWords {
             get {
@@ -124,7 +89,7 @@ namespace R3MUS.Devpack.Jabber.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
         public bool Debug {
             get {
                 return ((bool)(this["Debug"]));
@@ -133,16 +98,52 @@ namespace R3MUS.Devpack.Jabber.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://hooks.slack.com/services/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")]
+        public string SlackWebhook {
+            get {
+                return ((string)(this["SlackWebhook"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("fleets")]
         public string Room {
             get {
                 return ((string)(this["Room"]));
             }
         }
         
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("clyde_en_marland@bladesofgrass.space")]
+        public string UserName {
+            get {
+                return ((string)(this["UserName"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("p33K4800")]
+        public string Password {
+            get {
+                return ((string)(this["Password"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("director_gnome@bladesofgrass.space")]
+        public string ListenTo {
+            get {
+                return ((string)(this["ListenTo"]));
+            }
+        }
+        
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.DefaultSettingValueAttribute("dow_fcs")]
         public string FCGroup {
             get {
                 return ((string)(this["FCGroup"]));
@@ -154,7 +155,7 @@ namespace R3MUS.Devpack.Jabber.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.DefaultSettingValueAttribute("fleet-command")]
         public string FCRoom {
             get {
                 return ((string)(this["FCRoom"]));

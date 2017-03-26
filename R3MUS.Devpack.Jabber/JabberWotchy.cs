@@ -80,22 +80,25 @@ namespace R3MUS.Devpack.Jabber
                 }
                 catch (Exception ex)
                 {
-                    var payload = new MessagePayload();
-                    payload.Attachments = new List<MessagePayloadAttachment>();
+                    if (Properties.Settings.Default.Debug)
+                    { 
+                        var payload = new MessagePayload();
+                        payload.Attachments = new List<MessagePayloadAttachment>();
 
-                    payload.Attachments.Add(new MessagePayloadAttachment()
-                    {
-                        Text = "Life? Don't talk to me about life.",
-                        Title = "Marvin won't wake up. Try oiling his nuts.",
-                        Colour = "#ff0066"
-                    });
-                    payload.Attachments.Add(new MessagePayloadAttachment()
-                    {
-                        Text = ex.Message,
-                        Title = "Marvin system boot error",
-                        Colour = "#ff0066"
-                    });
-                    Plugin.SendToRoom(payload, "it_testing", Properties.Settings.Default.SlackWebhook, Properties.Settings.Default.BroadcastName);
+                        payload.Attachments.Add(new MessagePayloadAttachment()
+                        {
+                            Text = "Life? Don't talk to me about life.",
+                            Title = "Marvin won't wake up. Try oiling his nuts.",
+                            Colour = "#ff0066"
+                        });
+                        payload.Attachments.Add(new MessagePayloadAttachment()
+                        {
+                            Text = ex.Message,
+                            Title = "Marvin system boot error",
+                            Colour = "#ff0066"
+                        });
+                        Plugin.SendToRoom(payload, "it_testing", Properties.Settings.Default.SlackWebhook, Properties.Settings.Default.BroadcastName);
+                    }
                 }
             }
             try
@@ -244,7 +247,10 @@ namespace R3MUS.Devpack.Jabber
 
         static void MessageCallBack(object sender, agsXMPP.protocol.client.Message msg, object data)
         {
-            if (msg.Body != null)
+            if ((msg.Body != null) && (msg.Body.Contains(Properties.Settings.Default.AllianceGroup) 
+                || msg.Body.Contains(Properties.Settings.Default.CorpGroup) 
+                ||
+                msg.Body.Contains(Properties.Settings.Default.FCGroup)))
             {
                 var lines = msg.Body.Split(new[] { "\n" }, StringSplitOptions.RemoveEmptyEntries);
                 var senderLines = lines[0].Replace("**** This was broadcast by ", "").Replace(" EVE ****", "").Replace("@everyone", "").Split(new[] { " at " }, StringSplitOptions.RemoveEmptyEntries);
@@ -275,14 +281,20 @@ namespace R3MUS.Devpack.Jabber
                     Title = string.Format("{0}", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")),
                     Colour = "#ff0066"
                 });
-                Plugin.SendToRoom(payload, Properties.Settings.Default.Room, Properties.Settings.Default.SlackWebhook, Properties.Settings.Default.BroadcastName);
+                if (msg.Body.Contains(Properties.Settings.Default.CorpGroup) || msg.Body.Contains(Properties.Settings.Default.AllianceGroup)) { 
+                    Plugin.SendToRoom(payload, Properties.Settings.Default.Room, Properties.Settings.Default.SlackWebhook, Properties.Settings.Default.BroadcastName);
 
-                if (msg.Body.Contains(Properties.Settings.Default.AllianceGroup))
-                {
-                    foreach (var webhook in Properties.Settings.Default.SharedWebhooks)
+                    if (msg.Body.Contains(Properties.Settings.Default.AllianceGroup))
                     {
-                        Plugin.SendToRoom(payload, Properties.Settings.Default.Room, webhook, Properties.Settings.Default.BroadcastName);
+                        foreach (var webhook in Properties.Settings.Default.SharedWebhooks)
+                        {
+                            Plugin.SendToRoom(payload, Properties.Settings.Default.Room, webhook, Properties.Settings.Default.BroadcastName);
+                        }
                     }
+                }
+                else if (msg.Body.Contains(Properties.Settings.Default.FCGroup))
+                {
+                    Plugin.SendToRoom(payload, Properties.Settings.Default.FCRoom, Properties.Settings.Default.SlackWebhook, Properties.Settings.Default.BroadcastName);
                 }
             }
         }
